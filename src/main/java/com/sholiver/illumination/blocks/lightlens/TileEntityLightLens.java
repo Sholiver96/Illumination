@@ -1,5 +1,6 @@
 package com.sholiver.illumination.blocks.lightlens;
 
+import com.sholiver.illumination.blocks.lightreceiver.BlockLightReceiver;
 import com.sholiver.illumination.blocks.lightreceiver.TileEntityLightReceiver;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -56,7 +57,7 @@ public abstract class TileEntityLightLens extends TileEntity implements ITickabl
             }
             Block block = world.getBlockState(blockPos).getBlock();
             TileEntity te = world.getTileEntity(blockPos);
-            if(te instanceof TileEntityLightReceiver){
+            if(te instanceof TileEntityLightReceiver) {
                 if(((TileEntityLightReceiver) te).getOrientation() == getOrientation().getOpposite()){
                     return 0F;
                 }

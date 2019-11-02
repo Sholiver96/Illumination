@@ -1,6 +1,5 @@
 package com.sholiver.illumination.blocks.solarlens;
 
-import com.sholiver.illumination.blocks.illuminator.TileEntityIlluminator;
 import com.sholiver.illumination.util.LightBeamRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -22,10 +21,5 @@ public class TileEntitySolarLensRenderer extends TileEntitySpecialRenderer<TileE
             lightBeamRenderer.renderLightBeam(direction, te.getLightBeamLength(), 0.075F, new float[]{0.8F, 0.8F, 0.8F, 0.4F});
             GlStateManager.popMatrix();
         }
-    }
-
-    @Override
-    public boolean isGlobalRenderer(TileEntitySolarLens te) {
-        return true;
     }
 }

@@ -1,5 +1,6 @@
 package com.sholiver.illumination.blocks.lightrelay;
 
+import com.sholiver.illumination.blocks.lightreceiver.BlockLightReceiver;
 import com.sholiver.illumination.blocks.lightreceiver.TileEntityLightReceiver;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;

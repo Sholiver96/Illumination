@@ -48,7 +48,6 @@ public abstract class TileEntityLightReceiver extends TileEntity implements ITic
                     }
                     if(te instanceof TileEntityLightRelay){
                         if(((TileEntityLightRelay) te).getOrientation().getOpposite().getIndex() == i){
-                            int maxLength = (((TileEntityLightRelay) te).maxLength);
                             luminosity += (((TileEntityLightRelay) te).luminosity * 0.9);
                         }
                         j=11;

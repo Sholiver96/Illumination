@@ -22,9 +22,4 @@ public class TileEntitySolarRelayRenderer extends TileEntitySpecialRenderer<Tile
             GlStateManager.popMatrix();
         }
     }
-
-    @Override
-    public boolean isGlobalRenderer(TileEntityLightRelay te) {
-        return true;
-    }
 }
