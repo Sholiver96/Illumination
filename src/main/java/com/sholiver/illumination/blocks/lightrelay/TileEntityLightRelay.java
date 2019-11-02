@@ -49,14 +49,6 @@ public class TileEntityLightRelay extends TileEntityLightReceiver {
 
     @Override
     public AxisAlignedBB getRenderBoundingBox() {
-        EnumFacing rotation = this.getOrientation();
-        switch(rotation)
-        {
-            case NORTH: return new AxisAlignedBB(this.getPos(), this.getPos().north(maxLength).up(1));
-            case SOUTH: return new AxisAlignedBB(this.getPos(), this.getPos().south(maxLength).up(1));
-            case WEST: return new AxisAlignedBB(this.getPos(), this.getPos().west(maxLength).up(1));
-            case EAST: return new AxisAlignedBB(this.getPos(), this.getPos().east(maxLength).up(1));
-            default: return new AxisAlignedBB(this.getPos());
-        }
+        return new AxisAlignedBB(this.getPos().south(maxLength).east(maxLength), this.getPos().north(maxLength).west(maxLength).up(1));
     }
 }

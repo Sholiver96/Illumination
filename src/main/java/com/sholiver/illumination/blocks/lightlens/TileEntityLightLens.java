@@ -99,16 +99,7 @@ public abstract class TileEntityLightLens extends TileEntity implements ITickabl
 
     @Override
     public AxisAlignedBB getRenderBoundingBox() {
-        EnumFacing rotation = this.getOrientation();
-        switch(rotation)
-        {
-            case DOWN: return new AxisAlignedBB(this.getPos(), this.getPos().down(maxLength));
-            case NORTH: return new AxisAlignedBB(this.getPos(), this.getPos().north(maxLength));
-            case SOUTH: return new AxisAlignedBB(this.getPos(), this.getPos().south(maxLength));
-            case WEST: return new AxisAlignedBB(this.getPos(), this.getPos().west(maxLength));
-            case EAST: return new AxisAlignedBB(this.getPos(), this.getPos().east(maxLength));
-            default: return new AxisAlignedBB(this.getPos(), this.getPos().up(maxLength));
-        }
+        return new AxisAlignedBB(this.getPos().south(maxLength).east(maxLength), this.getPos().north(maxLength).west(maxLength).up(1));
     }
 
     public EnumFacing getOrientation() {

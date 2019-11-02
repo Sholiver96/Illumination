@@ -20,9 +20,4 @@ public class TileEntityIlluminatorRenderer extends TileEntitySpecialRenderer<Til
             GlStateManager.popMatrix();
         }
     }
-
-    @Override
-    public boolean isGlobalRenderer(TileEntityIlluminator te) {
-        return true;
-    }
 }
