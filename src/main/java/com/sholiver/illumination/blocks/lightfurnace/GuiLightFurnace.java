@@ -23,7 +23,7 @@ public class GuiLightFurnace extends GuiLightMachine<ContainerLightFurnace> {
         int luminosityLevel = getLuminosityLevel();
         if(te.isBurning())
         {
-            this.drawTexturedModalRect(relX + 56, relY + 36, 176 + 14 * luminosityLevel, 0, 14, 14);
+            this.drawTexturedModalRect(relX + 56, relY + 54, 176 + 14 * luminosityLevel, 0, 14, 14);
         }
         int scaledCookTime = this.getCookProgressScaled(24);
         this.drawTexturedModalRect(relX + 79, relY + 34, 176, 14, scaledCookTime + 1, 16);

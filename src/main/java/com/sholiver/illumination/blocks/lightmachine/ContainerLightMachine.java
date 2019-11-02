@@ -19,14 +19,15 @@ public abstract class ContainerLightMachine extends Container {
     public ContainerLightMachine(IInventory inv, TileEntityLightMachine te)
     {
         this.te = te;
-        addPlayerSlots(inv, 8, 84);
         addOwnSlots();
+        addPlayerSlots(inv, 8, 84);
     }
 
     protected abstract void addOwnSlots();
 
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
+        int slots = te.itemStackHandler.getSlots();
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
 
@@ -34,14 +35,13 @@ public abstract class ContainerLightMachine extends Container {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
-            if (index < te.slots) {
-                if (!this.mergeItemStack(itemstack1, te.slots, this.inventorySlots.size(), true)) {
+            if (index < slots) {
+                if (!this.mergeItemStack(itemstack1, slots, 36 + slots, true)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (!this.mergeItemStack(itemstack1, 0, te.slots, false)) {
+            } else if (!this.mergeItemStack(itemstack1, 0, slots-1, false)) {
                 return ItemStack.EMPTY;
             }
-
             if (itemstack1.isEmpty()) {
                 slot.putStack(ItemStack.EMPTY);
             } else {
@@ -49,6 +49,93 @@ public abstract class ContainerLightMachine extends Container {
             }
         }
         return itemstack;
+    }
+
+    @Override
+    protected boolean mergeItemStack(ItemStack p_mergeItemStack_1_, int p_mergeItemStack_2_, int p_mergeItemStack_3_, boolean p_mergeItemStack_4_) {
+        boolean flag = false;
+        int i = p_mergeItemStack_2_;
+        if (p_mergeItemStack_4_) {
+            i = p_mergeItemStack_3_ - 1;
+        }
+
+        Slot slot1;
+        ItemStack itemstack;
+        if (p_mergeItemStack_1_.isStackable()) {
+            while(!p_mergeItemStack_1_.isEmpty()) {
+                if (p_mergeItemStack_4_) {
+                    if (i < p_mergeItemStack_2_) {
+                        break;
+                    }
+                } else if (i >= p_mergeItemStack_3_) {
+                    break;
+                }
+
+                slot1 = (Slot)this.inventorySlots.get(i);
+                itemstack = slot1.getStack();
+                if (!itemstack.isEmpty() && itemstack.getItem() == p_mergeItemStack_1_.getItem() && (!p_mergeItemStack_1_.getHasSubtypes() || p_mergeItemStack_1_.getMetadata() == itemstack.getMetadata()) && ItemStack.areItemStackTagsEqual(p_mergeItemStack_1_, itemstack)) {
+                    int j = itemstack.getCount() + p_mergeItemStack_1_.getCount();
+                    int maxSize = Math.min(slot1.getSlotStackLimit(), p_mergeItemStack_1_.getMaxStackSize());
+                    if (j <= maxSize) {
+                        p_mergeItemStack_1_.setCount(0);
+                        itemstack.setCount(j);
+                        slot1.onSlotChanged();
+                        flag = true;
+                    } else if (itemstack.getCount() < maxSize) {
+                        p_mergeItemStack_1_.shrink(maxSize - itemstack.getCount());
+                        itemstack.setCount(maxSize);
+                        slot1.onSlotChanged();
+                        flag = true;
+                    }
+                }
+
+                if (p_mergeItemStack_4_) {
+                    --i;
+                } else {
+                    ++i;
+                }
+            }
+        }
+
+        if (!p_mergeItemStack_1_.isEmpty()) {
+            if (p_mergeItemStack_4_) {
+                i = p_mergeItemStack_3_ - 1;
+            } else {
+                i = p_mergeItemStack_2_;
+            }
+
+            while(true) {
+                if (p_mergeItemStack_4_) {
+                    if (i < p_mergeItemStack_2_) {
+                        break;
+                    }
+                } else if (i >= p_mergeItemStack_3_) {
+                    break;
+                }
+
+                slot1 = (Slot)this.inventorySlots.get(i);
+                itemstack = slot1.getStack();
+                if (itemstack.isEmpty() && slot1.isItemValid(p_mergeItemStack_1_)) {
+                    if (p_mergeItemStack_1_.getCount() > slot1.getSlotStackLimit()) {
+                        slot1.putStack(p_mergeItemStack_1_.splitStack(slot1.getSlotStackLimit()));
+                    } else {
+                        slot1.putStack(p_mergeItemStack_1_.splitStack(p_mergeItemStack_1_.getCount()));
+                    }
+
+                    slot1.onSlotChanged();
+                    flag = true;
+                    break;
+                }
+
+                if (p_mergeItemStack_4_) {
+                    --i;
+                } else {
+                    ++i;
+                }
+            }
+        }
+
+        return flag;
     }
 
     @Override

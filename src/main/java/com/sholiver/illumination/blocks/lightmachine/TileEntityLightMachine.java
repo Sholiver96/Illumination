@@ -10,7 +10,6 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public abstract class TileEntityLightMachine extends TileEntityLightReceiver {
 
-    public int slots;
     public int maxLuminosity;
 
     protected int cookTime;
@@ -19,8 +18,7 @@ public abstract class TileEntityLightMachine extends TileEntityLightReceiver {
 
     public TileEntityLightMachine(){super();}
 
-    public TileEntityLightMachine setValues(int slots, int maxLuminosity){
-        this.slots = slots;
+    public TileEntityLightMachine setValues(int maxLuminosity){
         this.maxLuminosity = maxLuminosity;
         return this;
     }

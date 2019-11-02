@@ -9,12 +9,10 @@ import javax.annotation.Nonnull;
 
 public class TileEntityIlluminator extends TileEntityLightMachine {
 
-    public static final int slots = 4;
-
     public TileEntityIlluminator()
     {
         super();
-        itemStackHandler = new ItemStackHandler(slots) {
+        itemStackHandler = new ItemStackHandler(3) {
             @Override
             protected void onContentsChanged(int slot) {
                 TileEntityIlluminator.this.markDirty();

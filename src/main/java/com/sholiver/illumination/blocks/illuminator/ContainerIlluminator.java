@@ -18,8 +18,8 @@ public class ContainerIlluminator extends ContainerLightMachine {
     protected void addOwnSlots()
     {
         IItemHandler itemHandler = this.te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-        addSlotToContainer(new SlotItemHandler(itemHandler, 0, 47, 17));
-        addSlotToContainer(new SlotItemHandler(itemHandler, 1, 65, 17));
+        addSlotToContainer(new SlotItemHandler(itemHandler, 0, 38, 35));
+        addSlotToContainer(new SlotItemHandler(itemHandler, 1, 56, 35));
         addSlotToContainer(new SlotItemHandler(itemHandler, 2, 116, 35));
     }
 }

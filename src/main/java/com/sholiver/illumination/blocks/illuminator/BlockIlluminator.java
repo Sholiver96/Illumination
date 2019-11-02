@@ -20,7 +20,7 @@ public class BlockIlluminator extends BlockLightMachine {
     @Nullable
     @Override
     public TileEntity createNewTileEntity(World world, int meta) {
-        return new TileEntityIlluminator().setValues(3,800);
+        return new TileEntityIlluminator().setValues(800);
     }
 
     @Override

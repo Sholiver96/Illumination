@@ -27,7 +27,7 @@ public class BlockLightFurnace extends BlockLightMachine {
     @Nullable
     @Override
     public TileEntity createNewTileEntity(World world, int i) {
-        return new TileEntityLightFurnace().setValues(2,800);
+        return new TileEntityLightFurnace().setValues(800);
     }
 
     @Override

@@ -15,13 +15,9 @@ public abstract class AbstractIlluminatorRecipeCategory<T extends IRecipeWrapper
     protected static final ResourceLocation TEXTURES = new ResourceLocation(Illumination.MODID, "textures/gui/illuminator_gui.png");
 
     protected IDrawableStatic staticFlame;
-    protected IDrawableAnimated animatedFlame;
     protected IDrawableStatic staticFlameGlimmering;
-    protected IDrawableAnimated animatedFlameGlimmering;
     protected IDrawableStatic staticFlameLuminous;
-    protected IDrawableAnimated animatedFlameLuminous;
     protected IDrawableStatic staticFlameRadiant;
-    protected IDrawableAnimated animatedFlameRadiant;
 
     protected IDrawableStatic staticLuminosity;
     protected IDrawableAnimated animatedArrow;
@@ -29,16 +25,9 @@ public abstract class AbstractIlluminatorRecipeCategory<T extends IRecipeWrapper
     protected AbstractIlluminatorRecipeCategory(IGuiHelper helper)
     {
         staticFlame = helper.createDrawable(TEXTURES, 176, 0, 14, 14);
-        animatedFlame = helper.createAnimatedDrawable(staticFlame, 300, IDrawableAnimated.StartDirection.TOP, true);
-
         staticFlameGlimmering = helper.createDrawable(TEXTURES, 190, 0, 14, 14);
-        animatedFlameGlimmering = helper.createAnimatedDrawable(staticFlameGlimmering, 300, IDrawableAnimated.StartDirection.TOP, true);
-
         staticFlameLuminous = helper.createDrawable(TEXTURES, 204, 0, 14, 14);
-        animatedFlameLuminous = helper.createAnimatedDrawable(staticFlameLuminous, 300, IDrawableAnimated.StartDirection.TOP, true);
-
         staticFlameRadiant = helper.createDrawable(TEXTURES, 218, 0, 14, 14);
-        animatedFlameRadiant = helper.createAnimatedDrawable(staticFlameRadiant, 300, IDrawableAnimated.StartDirection.TOP, true);
 
         IDrawableStatic staticArrow = helper.createDrawable(TEXTURES, 176, 14, 24, 17);
         animatedArrow = helper.createAnimatedDrawable(staticArrow, 200, IDrawableAnimated.StartDirection.LEFT, false);
@@ -50,10 +39,10 @@ public abstract class AbstractIlluminatorRecipeCategory<T extends IRecipeWrapper
     {
         switch (luminosity)
         {
-            case 150: return animatedFlameGlimmering;
-            case 200: return animatedFlameLuminous;
-            case 250: return animatedFlameRadiant;
-            default: return animatedFlame;
+            case 150: return staticFlameGlimmering;
+            case 200: return staticFlameLuminous;
+            case 250: return staticFlameRadiant;
+            default: return staticFlame;
         }
     }
 
