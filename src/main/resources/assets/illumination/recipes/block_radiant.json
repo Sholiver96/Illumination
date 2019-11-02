@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "illumination:ingot_radiant"
+    }
+  },
+  "result": {
+    "item": "illumination:block_radiant",
+    "count": 1
+  }
+}

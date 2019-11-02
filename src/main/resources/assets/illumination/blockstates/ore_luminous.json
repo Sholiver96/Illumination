@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "illumination:ore_luminous"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

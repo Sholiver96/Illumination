@@ -1,0 +1,27 @@
+# Blocks
+tile.illumination.block_glimmering.name=Glimmering Block
+tile.illumination.block_luminous.name=Luminous Block
+tile.illumination.block_radiant.name=Radiant Block
+tile.illumination.ore_glimmering.name=Glimmering Ore
+tile.illumination.ore_luminous.name=Luminous Ore
+tile.illumination.ore_radiant.name=Radiant Ore
+
+tile.illumination.illuminator.name=Illuminator
+tile.illumination.illuminator_glimmering.name=Glimmering Illuminator
+tile.illumination.illuminator_luminous.name=Luminous Illuminator
+tile.illumination.illuminator_radiant.name=Radiant Illuminator
+
+# Items
+item.illumination.ingot_glimmering.name=Glimmering Ingot
+item.illumination.ingot_luminous.name=Luminous Ingot
+item.illumination.ingot_radiant.name=Radiant Ingot
+item.illumination.dust_glimmering.name=Glimmering Dust
+item.illumination.dust_luminous.name=Luminous Dust
+item.illumination.dust_radiant.name=Radiant Dust
+item.illumination.coal_glimmering.name=Glimmering Coal
+item.illumination.coal_luminous.name=Luminous Coal
+item.illumination.coal_radiant.name=Radiant Coal
+item.illumination.lens.name=Lens
+
+# Tabs
+itemGroup.illumination=Illumination

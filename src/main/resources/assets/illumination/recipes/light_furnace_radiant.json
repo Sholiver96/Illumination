@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DDD",
+    "III",
+    "IFI"
+  ],
+  "key": {
+    "D": {
+      "item": "illumination:dust_radiant"
+    },
+    "I": {
+      "item": "illumination:ingot_luminous"
+    },
+    "F": {
+      "item": "illumination:light_furnace_luminous"
+    }
+  },
+  "result": {
+    "item": "illumination:light_furnace_radiant",
+    "count": 1
+  }
+}

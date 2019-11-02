@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "particle": "illumination:block/block_glimmering",
+    "all": "illumination:block/block_glimmering"
+  }
+}

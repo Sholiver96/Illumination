@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "illumination:block_luminous"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

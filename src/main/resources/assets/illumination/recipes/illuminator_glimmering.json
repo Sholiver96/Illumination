@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "ILI",
+    "IFI"
+  ],
+  "key": {
+    "I": {
+      "item": "illumination:ingot_glimmering"
+    },
+    "L": {
+      "item": "illumination:lens"
+    },
+    "F": {
+      "item": "illumination:illuminator"
+    }
+  },
+  "result": {
+    "item": "illumination:illuminator_glimmering",
+    "count": 1
+  }
+}

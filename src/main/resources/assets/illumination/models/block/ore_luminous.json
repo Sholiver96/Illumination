@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "particle": "illumination:block/ore_luminous",
+    "all": "illumination:block/ore_luminous"
+  }
+}
