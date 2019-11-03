@@ -31,7 +31,7 @@ public abstract class TileEntityLightReceiver extends TileEntity implements ITic
         for(int i = 2; i<=5; i++)
         {
             if(i != getOrientation().getIndex()){
-                for(int j = 1; j<=10; j++){
+                for(int j = 1; j<=32; j++){
                     BlockPos blockPos;
                     switch(i)
                     {
@@ -44,24 +44,24 @@ public abstract class TileEntityLightReceiver extends TileEntity implements ITic
                     TileEntity te = world.getTileEntity(blockPos);
                     Block block = world.getBlockState(blockPos).getBlock();
                     if(te instanceof TileEntitySolarLens){
-                        if(((TileEntitySolarLens) te).getOrientation().getOpposite().getIndex() == i){
+                        if(((TileEntitySolarLens) te).tier.getLaserLength() >= j && ((TileEntitySolarLens) te).getOrientation().getOpposite().getIndex() == i){
                             luminosity += (((TileEntitySolarLens) te).luminosity * tier.getEfficiency());
                         }
-                        j=11;
+                        j=33;
                     }
                     if(te instanceof TileEntityLightRelay){
-                        if(((TileEntityLightRelay) te).getOrientation().getOpposite().getIndex() == i){
+                        if(((TileEntityLightRelay) te).tier.getLaserLength() >= j && ((TileEntityLightRelay) te).getOrientation().getOpposite().getIndex() == i){
                             luminosity += (((TileEntityLightRelay) te).luminosity * tier.getEfficiency());
                         }
-                        j=11;
+                        j=33;
                     }
                     if(block != Blocks.AIR){
-                        j = 11;
+                        j = 33;
                     }
                 }
             }
         }
-        return luminosity;
+        return Math.min(luminosity, tier.getMachineLuminosity());
     }
 
     public EnumFacing getOrientation() {

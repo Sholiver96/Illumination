@@ -54,6 +54,9 @@ public class ModelRegistrationHandler
         registerModel(Item.getItemFromBlock(ModBlocks.SOLAR_LENS_RADIANT),0);
 
         registerModel(Item.getItemFromBlock(ModBlocks.LIGHT_RELAY),0);
+        registerModel(Item.getItemFromBlock(ModBlocks.LIGHT_RELAY_GLIMMERING),0);
+        registerModel(Item.getItemFromBlock(ModBlocks.LIGHT_RELAY_LUMINOUS),0);
+        registerModel(Item.getItemFromBlock(ModBlocks.LIGHT_RELAY_RADIANT),0);
     }
 
     private static void registerModel(Item item, int meta) {

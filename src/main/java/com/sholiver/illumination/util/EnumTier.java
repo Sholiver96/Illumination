@@ -7,7 +7,7 @@ public enum EnumTier {
         RADIANT(3,8,0.95F);
 
         private static int baseMachineLuminosity = 800;
-        private static int baseSolarLensLuminosity = 100;
+        private static int baseSolarLensLuminosity = 200;
         private static int baseLaserLength = 4;
 
         private final int index;

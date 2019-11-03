@@ -25,7 +25,7 @@ public abstract class TileEntityLightMachine extends TileEntityLightReceiver {
         boolean flag = this.isBurning();
         if(!this.world.isRemote){
             if(this.world.getWorldTime() % 20L == 0) {
-                if(luminosity != Math.min(tier.getMachineLuminosity(), getLuminosityFromNearbyLenses())) luminosity = Math.min(tier.getMachineLuminosity(), getLuminosityFromNearbyLenses());
+                if(luminosity != getLuminosityFromNearbyLenses()) luminosity = getLuminosityFromNearbyLenses();
                 this.world.markAndNotifyBlock(pos, null, world.getBlockState(pos), world.getBlockState(pos), 2);
             }
             if(this.isBurning() && this.canProcess()) {

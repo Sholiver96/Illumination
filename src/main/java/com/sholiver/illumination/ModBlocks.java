@@ -68,6 +68,12 @@ public class ModBlocks {
 
     @ObjectHolder(Illumination.MODID + ":light_relay")
     public static BlockLightRelay LIGHT_RELAY;
+    @ObjectHolder(Illumination.MODID + ":light_relay_glimmering")
+    public static BlockLightRelay LIGHT_RELAY_GLIMMERING;
+    @ObjectHolder(Illumination.MODID + ":light_relay_luminous")
+    public static BlockLightRelay LIGHT_RELAY_LUMINOUS;
+    @ObjectHolder(Illumination.MODID + ":light_relay_radiant")
+    public static BlockLightRelay LIGHT_RELAY_RADIANT;
 
 
     @Mod.EventBusSubscriber(modid = Illumination.MODID)
@@ -108,6 +114,9 @@ public class ModBlocks {
             GameRegistry.registerTileEntity(TileEntityLightRelay.class, "illumination:light_relay");
             ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLightRelay.class, new TileEntityLightRelayRenderer());
             registry.register(new BlockLightRelay("light_relay", BASIC));
+            registry.register(new BlockLightRelay("light_relay_glimmering", GLIMMERING));
+            registry.register(new BlockLightRelay("light_relay_luminous", LUMINOUS));
+            registry.register(new BlockLightRelay("light_relay_radiant", RADIANT));
         }
         @SubscribeEvent
         public static void registerItems (RegistryEvent.Register<Item> event)
@@ -137,6 +146,9 @@ public class ModBlocks {
             registry.register(new ItemBlock(ModBlocks.SOLAR_LENS_RADIANT).setRegistryName("solar_lens_radiant"));
 
             registry.register(new ItemBlock(ModBlocks.LIGHT_RELAY).setRegistryName("light_relay"));
+            registry.register(new ItemBlock(ModBlocks.LIGHT_RELAY_GLIMMERING).setRegistryName("light_relay_glimmering"));
+            registry.register(new ItemBlock(ModBlocks.LIGHT_RELAY_LUMINOUS).setRegistryName("light_relay_luminous"));
+            registry.register(new ItemBlock(ModBlocks.LIGHT_RELAY_RADIANT).setRegistryName("light_relay_radiant"));
         }
     }
 }

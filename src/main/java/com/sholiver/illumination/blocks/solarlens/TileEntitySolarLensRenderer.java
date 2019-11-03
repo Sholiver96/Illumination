@@ -22,4 +22,9 @@ public class TileEntitySolarLensRenderer extends TileEntitySpecialRenderer<TileE
             GlStateManager.popMatrix();
         }
     }
+
+    @Override
+    public boolean isGlobalRenderer(TileEntitySolarLens p_isGlobalRenderer_1_) {
+        return true;
+    }
 }
