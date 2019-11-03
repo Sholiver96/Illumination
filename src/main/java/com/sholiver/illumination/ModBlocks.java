@@ -7,7 +7,7 @@ import com.sholiver.illumination.blocks.solarlens.TileEntitySolarLens;
 import com.sholiver.illumination.blocks.solarlens.TileEntitySolarLensRenderer;
 import com.sholiver.illumination.blocks.lightrelay.BlockLightRelay;
 import com.sholiver.illumination.blocks.lightrelay.TileEntityLightRelay;
-import com.sholiver.illumination.blocks.lightrelay.TileEntitySolarRelayRenderer;
+import com.sholiver.illumination.blocks.lightrelay.TileEntityLightRelayRenderer;
 import com.sholiver.illumination.blocks.illuminator.BlockIlluminator;
 import com.sholiver.illumination.blocks.illuminator.TileEntityIlluminator;
 import com.sholiver.illumination.blocks.lightfurnace.BlockLightFurnace;
@@ -22,6 +22,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.registries.IForgeRegistry;
+
+import static com.sholiver.illumination.util.EnumTier.*;
 
 public class ModBlocks {
     @ObjectHolder(Illumination.MODID + ":block_glimmering")
@@ -48,9 +50,21 @@ public class ModBlocks {
 
     @ObjectHolder(Illumination.MODID + ":light_furnace")
     public static BlockLightFurnace LIGHT_FURNACE;
+    @ObjectHolder(Illumination.MODID + ":light_furnace_glimmering")
+    public static BlockLightFurnace LIGHT_FURNACE_GLIMMERING;
+    @ObjectHolder(Illumination.MODID + ":light_furnace_luminous")
+    public static BlockLightFurnace LIGHT_FURNACE_LUMINOUS;
+    @ObjectHolder(Illumination.MODID + ":light_furnace_radiant")
+    public static BlockLightFurnace LIGHT_FURNACE_RADIANT;
 
     @ObjectHolder(Illumination.MODID + ":solar_lens")
     public static BlockSolarLens SOLAR_LENS;
+    @ObjectHolder(Illumination.MODID + ":solar_lens_glimmering")
+    public static BlockSolarLens SOLAR_LENS_GLIMMERING;
+    @ObjectHolder(Illumination.MODID + ":solar_lens_luminous")
+    public static BlockSolarLens SOLAR_LENS_LUMINOUS;
+    @ObjectHolder(Illumination.MODID + ":solar_lens_radiant")
+    public static BlockSolarLens SOLAR_LENS_RADIANT;
 
     @ObjectHolder(Illumination.MODID + ":light_relay")
     public static BlockLightRelay LIGHT_RELAY;
@@ -71,23 +85,29 @@ public class ModBlocks {
             registry.register(new BlockLuminousBlock());
             registry.register(new BlockRadiantBlock());
 
-            GameRegistry.registerTileEntity(TileEntityIlluminator.class, "illuminator");
+            GameRegistry.registerTileEntity(TileEntityIlluminator.class, "illumination:illuminator");
             ClientRegistry.bindTileEntitySpecialRenderer(TileEntityIlluminator.class, new TileEntityIlluminatorRenderer());
-            registry.register(new BlockIlluminator("illuminator", 400));
-            registry.register(new BlockIlluminator("illuminator_glimmering", 800));
-            registry.register(new BlockIlluminator("illuminator_luminous", 1600));
-            registry.register(new BlockIlluminator("illuminator_radiant", 3200));
+            registry.register(new BlockIlluminator("illuminator", BASIC));
+            registry.register(new BlockIlluminator("illuminator_glimmering", GLIMMERING));
+            registry.register(new BlockIlluminator("illuminator_luminous", LUMINOUS));
+            registry.register(new BlockIlluminator("illuminator_radiant", RADIANT));
 
-            GameRegistry.registerTileEntity(TileEntityLightFurnace.class, "light_furnace");
-            registry.register(new BlockLightFurnace("light_furnace", 400));
+            GameRegistry.registerTileEntity(TileEntityLightFurnace.class, "illumination:light_furnace");
+            registry.register(new BlockLightFurnace("light_furnace", BASIC));
+            registry.register(new BlockLightFurnace("light_furnace_glimmering", GLIMMERING));
+            registry.register(new BlockLightFurnace("light_furnace_luminous", LUMINOUS));
+            registry.register(new BlockLightFurnace("light_furnace_radiant", RADIANT));
 
-            GameRegistry.registerTileEntity(TileEntitySolarLens.class, "solar_lens");
+            GameRegistry.registerTileEntity(TileEntitySolarLens.class, "illumination:solar_lens");
             ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySolarLens.class, new TileEntitySolarLensRenderer());
-            registry.register(new BlockSolarLens());
+            registry.register(new BlockSolarLens("solar_lens", BASIC));
+            registry.register(new BlockSolarLens("solar_lens_glimmering", GLIMMERING));
+            registry.register(new BlockSolarLens("solar_lens_luminous", LUMINOUS));
+            registry.register(new BlockSolarLens("solar_lens_radiant", RADIANT));
 
-            GameRegistry.registerTileEntity(TileEntityLightRelay.class, "light_relay");
-            ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLightRelay.class, new TileEntitySolarRelayRenderer());
-            registry.register(new BlockLightRelay());
+            GameRegistry.registerTileEntity(TileEntityLightRelay.class, "illumination:light_relay");
+            ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLightRelay.class, new TileEntityLightRelayRenderer());
+            registry.register(new BlockLightRelay("light_relay", BASIC));
         }
         @SubscribeEvent
         public static void registerItems (RegistryEvent.Register<Item> event)
@@ -107,8 +127,14 @@ public class ModBlocks {
             registry.register(new ItemBlock(ModBlocks.ILLUMINATOR_RADIANT).setRegistryName("illuminator_radiant"));
 
             registry.register(new ItemBlock(ModBlocks.LIGHT_FURNACE).setRegistryName("light_furnace"));
+            registry.register(new ItemBlock(ModBlocks.LIGHT_FURNACE_GLIMMERING).setRegistryName("light_furnace_glimmering"));
+            registry.register(new ItemBlock(ModBlocks.LIGHT_FURNACE_LUMINOUS).setRegistryName("light_furnace_luminous"));
+            registry.register(new ItemBlock(ModBlocks.LIGHT_FURNACE_RADIANT).setRegistryName("light_furnace_radiant"));
 
             registry.register(new ItemBlock(ModBlocks.SOLAR_LENS).setRegistryName("solar_lens"));
+            registry.register(new ItemBlock(ModBlocks.SOLAR_LENS_GLIMMERING).setRegistryName("solar_lens_glimmering"));
+            registry.register(new ItemBlock(ModBlocks.SOLAR_LENS_LUMINOUS).setRegistryName("solar_lens_luminous"));
+            registry.register(new ItemBlock(ModBlocks.SOLAR_LENS_RADIANT).setRegistryName("solar_lens_radiant"));
 
             registry.register(new ItemBlock(ModBlocks.LIGHT_RELAY).setRegistryName("light_relay"));
         }

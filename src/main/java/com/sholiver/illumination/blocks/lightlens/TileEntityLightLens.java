@@ -1,7 +1,7 @@
 package com.sholiver.illumination.blocks.lightlens;
 
-import com.sholiver.illumination.blocks.lightreceiver.BlockLightReceiver;
 import com.sholiver.illumination.blocks.lightreceiver.TileEntityLightReceiver;
+import com.sholiver.illumination.util.EnumTier;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,20 +15,15 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 
-import static com.sholiver.illumination.util.WorldUtil.FACING;
+import static com.sholiver.illumination.util.Properties.FACING;
 
 public abstract class TileEntityLightLens extends TileEntity implements ITickable {
 
     public int luminosity;
-    public int maxLuminosity;
-    public int maxLength;
+    public EnumTier tier;
 
-    public TileEntityLightLens(){super();}
-
-    public TileEntityLightLens setMaxValues(int maxLength, int maxLuminosity){
-        this.maxLength = maxLength;
-        this.maxLuminosity = maxLuminosity;
-        return this;
+    public TileEntityLightLens(){
+        super();
     }
 
     @Override
@@ -46,7 +41,7 @@ public abstract class TileEntityLightLens extends TileEntity implements ITickabl
     public abstract int getLuminosityFromSource();
 
     public float getLightBeamLength() {
-        for(int i = 1; i <= maxLength; i++) {
+        for(int i = 1; i <= tier.getLaserLength(); i++) {
             BlockPos blockPos;
             switch (getOrientation()) {
                 case NORTH: blockPos = pos.north(i); break;
@@ -75,9 +70,7 @@ public abstract class TileEntityLightLens extends TileEntity implements ITickabl
             case 0:
                 return this.luminosity;
             case 1:
-                return this.maxLuminosity;
-            case 2:
-                return this.maxLength;
+                return this.tier.getIndex();
             default:
                 return 0;
         }
@@ -89,16 +82,14 @@ public abstract class TileEntityLightLens extends TileEntity implements ITickabl
                 this.luminosity = value;
                 return;
             case 1:
-                this.maxLuminosity = value;
-                return;
-            case 2:
-                this.maxLength = value;
+                this.tier = EnumTier.fromIndex(value);
                 return;
         }
     }
 
     @Override
     public AxisAlignedBB getRenderBoundingBox() {
+        int maxLength = tier.getLaserLength();
         return new AxisAlignedBB(this.getPos().south(maxLength).east(maxLength), this.getPos().north(maxLength).west(maxLength).up(1));
     }
 
@@ -117,15 +108,13 @@ public abstract class TileEntityLightLens extends TileEntity implements ITickabl
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
         this.luminosity = compound.getInteger("Luminosity");
-        this.maxLuminosity = compound.getInteger("MaxLuminosity");
-        this.maxLength = compound.getInteger("MaxLength");
+        this.tier = EnumTier.fromIndex(compound.getInteger("Tier"));
     }
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
         compound.setInteger("Luminosity", this.luminosity);
-        compound.setInteger("MaxLuminosity", this.maxLuminosity);
-        compound.setInteger("MaxLength", this.maxLength);
+        compound.setInteger("Tier", this.tier.getIndex());
         return compound;
     }
 

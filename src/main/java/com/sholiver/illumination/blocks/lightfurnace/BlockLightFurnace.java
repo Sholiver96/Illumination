@@ -3,6 +3,7 @@ package com.sholiver.illumination.blocks.lightfurnace;
 import com.sholiver.illumination.Illumination;
 import com.sholiver.illumination.blocks.lightmachine.BlockLightMachine;
 import com.sholiver.illumination.blocks.lightreceiver.BlockLightReceiver;
+import com.sholiver.illumination.util.EnumTier;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -20,14 +21,14 @@ import javax.annotation.Nullable;
 
 public class BlockLightFurnace extends BlockLightMachine {
 
-    public BlockLightFurnace(String registryName, int maxLuminosity) {
-        super(registryName, maxLuminosity, 2);
+    public BlockLightFurnace(String registryName, EnumTier tier) {
+        super(registryName, tier, 2);
     }
 
     @Nullable
     @Override
     public TileEntity createNewTileEntity(World world, int i) {
-        return new TileEntityLightFurnace().setValues(800);
+        return new TileEntityLightFurnace(tier);
     }
 
     @Override

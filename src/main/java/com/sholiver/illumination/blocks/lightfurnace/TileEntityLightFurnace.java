@@ -2,6 +2,7 @@ package com.sholiver.illumination.blocks.lightfurnace;
 
 import com.sholiver.illumination.blocks.lightmachine.TileEntityLightMachine;
 import com.sholiver.illumination.recipe.LightFurnaceRecipes;
+import com.sholiver.illumination.util.EnumTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.items.ItemStackHandler;
@@ -9,6 +10,11 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 
 public class TileEntityLightFurnace extends TileEntityLightMachine {
+
+    public  TileEntityLightFurnace(EnumTier tier){
+        this();
+        this.tier = tier;
+    }
 
     public TileEntityLightFurnace(){
         super();

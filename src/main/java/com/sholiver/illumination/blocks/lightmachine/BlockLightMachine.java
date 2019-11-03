@@ -2,6 +2,7 @@ package com.sholiver.illumination.blocks.lightmachine;
 
 import com.sholiver.illumination.Illumination;
 import com.sholiver.illumination.blocks.lightreceiver.BlockLightReceiver;
+import com.sholiver.illumination.util.EnumTier;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,17 +13,16 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import static com.sholiver.illumination.util.WorldUtil.FACING;
+import static com.sholiver.illumination.util.Properties.FACING;
 
 public abstract class BlockLightMachine extends BlockLightReceiver {
 
     public final int guiId;
-    protected final int maxLuminosity;
 
-    public BlockLightMachine(String registryName, int maxLuminosity, int guiId) {
-        super(registryName);
+
+    public BlockLightMachine(String registryName, EnumTier tier, int guiId) {
+        super(registryName, tier);
         this.guiId = guiId;
-        this.maxLuminosity = maxLuminosity;
     }
 
     @Override

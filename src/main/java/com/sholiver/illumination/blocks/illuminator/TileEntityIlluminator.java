@@ -2,12 +2,18 @@ package com.sholiver.illumination.blocks.illuminator;
 
 import com.sholiver.illumination.blocks.lightmachine.TileEntityLightMachine;
 import com.sholiver.illumination.recipe.IlluminatorRecipes;
+import com.sholiver.illumination.util.EnumTier;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
 
 public class TileEntityIlluminator extends TileEntityLightMachine {
+
+    public TileEntityIlluminator(EnumTier tier){
+        this();
+        this.tier = tier;
+    }
 
     public TileEntityIlluminator()
     {

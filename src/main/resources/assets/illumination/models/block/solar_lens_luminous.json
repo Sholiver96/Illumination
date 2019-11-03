@@ -1,10 +1,10 @@
 {
     "textures": {
-        "illuminator_lens": "illumination:block/illuminator_lens",
-        "machine_bottom": "illumination:block/machine_bottom",
+        "illuminator_lens": "illumination:block/illuminator_luminous_lens",
+        "machine_bottom": "illumination:block/machine_luminous_bottom",
         "machine_top": "illumination:block/machine_top",
         "machine_mirror": "illumination:block/machine_mirror",
-        "machine_side": "illumination:block/machine_side"
+        "machine_side": "illumination:block/machine_luminous_side"
     },
     "display": {
         "gui": {

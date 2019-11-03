@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "illumination:block/light_furnace_radiant_front",
+    "north": "illumination:block/light_furnace_radiant_front",
+    "south": "illumination:block/light_receiver_radiant",
+    "east": "illumination:block/light_receiver_radiant",
+    "west": "illumination:block/light_receiver_radiant",
+    "up": "illumination:block/machine_radiant_top",
+    "down": "illumination:block/machine_radiant_top"
+  }
+}

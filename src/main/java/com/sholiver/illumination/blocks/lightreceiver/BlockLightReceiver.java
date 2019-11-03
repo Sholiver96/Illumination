@@ -1,6 +1,7 @@
 package com.sholiver.illumination.blocks.lightreceiver;
 
 import com.sholiver.illumination.Illumination;
+import com.sholiver.illumination.util.EnumTier;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -8,17 +9,19 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
 
-import static com.sholiver.illumination.util.WorldUtil.FACING;
+import static com.sholiver.illumination.util.Properties.FACING;
 
 public abstract class BlockLightReceiver extends Block implements ITileEntityProvider {
 
-    public BlockLightReceiver(String registryName) {
+    public final EnumTier tier;
+    public BlockLightReceiver(String registryName, EnumTier tier) {
         super(Material.IRON);
         setRegistryName(registryName);
         setUnlocalizedName(Illumination.MODID + "." + registryName);
         setCreativeTab(Illumination.ILLUMINATION_TAB);
         setHardness(2.0f);
         setResistance(20.0f);
+        this.tier = tier;
     }
 
     @Override

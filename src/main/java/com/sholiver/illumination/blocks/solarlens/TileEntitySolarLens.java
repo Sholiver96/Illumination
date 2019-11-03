@@ -1,9 +1,14 @@
 package com.sholiver.illumination.blocks.solarlens;
 import com.sholiver.illumination.blocks.lightlens.TileEntityLightLens;
+import com.sholiver.illumination.util.EnumTier;
 import net.minecraft.world.EnumSkyBlock;
 
 public class TileEntitySolarLens extends TileEntityLightLens {
 
+    public TileEntitySolarLens(EnumTier tier){
+        this();
+        this.tier = tier;
+    }
     public TileEntitySolarLens(){super();}
 
     @Override
@@ -23,7 +28,7 @@ public class TileEntitySolarLens extends TileEntityLightLens {
         if(world.getSkylightSubtracted() >= 10) return 0;
         else {
             int blockLight = world.getLightFor(EnumSkyBlock.SKY, this.getPos().up()) - 5 - world.getSkylightSubtracted();
-            return Math.max(blockLight * maxLuminosity/10 , 0);
+            return Math.max(blockLight * tier.getSolarLensLuminosity()/10 , 0);
         }
     }
 }

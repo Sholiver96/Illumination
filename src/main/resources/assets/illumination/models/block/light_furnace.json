@@ -1,11 +1,11 @@
 {
   "parent": "block/cube",
   "textures": {
-    "particle": "illumination:block/solar_furnace_front",
-    "north": "illumination:block/solar_furnace_front",
-    "south": "illumination:block/solar_receiver",
-    "east": "illumination:block/solar_receiver",
-    "west": "illumination:block/solar_receiver",
+    "particle": "illumination:block/light_furnace_front",
+    "north": "illumination:block/light_furnace_front",
+    "south": "illumination:block/light_receiver",
+    "east": "illumination:block/light_receiver",
+    "west": "illumination:block/light_receiver",
     "up": "illumination:block/machine_bottom",
     "down": "illumination:block/machine_bottom"
   }

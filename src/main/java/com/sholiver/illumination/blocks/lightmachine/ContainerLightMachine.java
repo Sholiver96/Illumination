@@ -14,7 +14,7 @@ public abstract class ContainerLightMachine extends Container {
     protected TileEntityLightMachine te;
 
     protected int lastCookTime = 0;
-    protected int lastMaxLuminosity = 0;
+    protected int lastTier = 0;
 
     public ContainerLightMachine(IInventory inv, TileEntityLightMachine te)
     {
@@ -52,93 +52,6 @@ public abstract class ContainerLightMachine extends Container {
     }
 
     @Override
-    protected boolean mergeItemStack(ItemStack p_mergeItemStack_1_, int p_mergeItemStack_2_, int p_mergeItemStack_3_, boolean p_mergeItemStack_4_) {
-        boolean flag = false;
-        int i = p_mergeItemStack_2_;
-        if (p_mergeItemStack_4_) {
-            i = p_mergeItemStack_3_ - 1;
-        }
-
-        Slot slot1;
-        ItemStack itemstack;
-        if (p_mergeItemStack_1_.isStackable()) {
-            while(!p_mergeItemStack_1_.isEmpty()) {
-                if (p_mergeItemStack_4_) {
-                    if (i < p_mergeItemStack_2_) {
-                        break;
-                    }
-                } else if (i >= p_mergeItemStack_3_) {
-                    break;
-                }
-
-                slot1 = (Slot)this.inventorySlots.get(i);
-                itemstack = slot1.getStack();
-                if (!itemstack.isEmpty() && itemstack.getItem() == p_mergeItemStack_1_.getItem() && (!p_mergeItemStack_1_.getHasSubtypes() || p_mergeItemStack_1_.getMetadata() == itemstack.getMetadata()) && ItemStack.areItemStackTagsEqual(p_mergeItemStack_1_, itemstack)) {
-                    int j = itemstack.getCount() + p_mergeItemStack_1_.getCount();
-                    int maxSize = Math.min(slot1.getSlotStackLimit(), p_mergeItemStack_1_.getMaxStackSize());
-                    if (j <= maxSize) {
-                        p_mergeItemStack_1_.setCount(0);
-                        itemstack.setCount(j);
-                        slot1.onSlotChanged();
-                        flag = true;
-                    } else if (itemstack.getCount() < maxSize) {
-                        p_mergeItemStack_1_.shrink(maxSize - itemstack.getCount());
-                        itemstack.setCount(maxSize);
-                        slot1.onSlotChanged();
-                        flag = true;
-                    }
-                }
-
-                if (p_mergeItemStack_4_) {
-                    --i;
-                } else {
-                    ++i;
-                }
-            }
-        }
-
-        if (!p_mergeItemStack_1_.isEmpty()) {
-            if (p_mergeItemStack_4_) {
-                i = p_mergeItemStack_3_ - 1;
-            } else {
-                i = p_mergeItemStack_2_;
-            }
-
-            while(true) {
-                if (p_mergeItemStack_4_) {
-                    if (i < p_mergeItemStack_2_) {
-                        break;
-                    }
-                } else if (i >= p_mergeItemStack_3_) {
-                    break;
-                }
-
-                slot1 = (Slot)this.inventorySlots.get(i);
-                itemstack = slot1.getStack();
-                if (itemstack.isEmpty() && slot1.isItemValid(p_mergeItemStack_1_)) {
-                    if (p_mergeItemStack_1_.getCount() > slot1.getSlotStackLimit()) {
-                        slot1.putStack(p_mergeItemStack_1_.splitStack(slot1.getSlotStackLimit()));
-                    } else {
-                        slot1.putStack(p_mergeItemStack_1_.splitStack(p_mergeItemStack_1_.getCount()));
-                    }
-
-                    slot1.onSlotChanged();
-                    flag = true;
-                    break;
-                }
-
-                if (p_mergeItemStack_4_) {
-                    --i;
-                } else {
-                    ++i;
-                }
-            }
-        }
-
-        return flag;
-    }
-
-    @Override
     public boolean canInteractWith(EntityPlayer entityPlayer) {
         return te.canInteractWith(entityPlayer);
     }
@@ -157,12 +70,12 @@ public abstract class ContainerLightMachine extends Container {
             if(lastCookTime != te.getField(1)) {
                 listener.sendWindowProperty(this, 1, te.getField(1));
             }
-            if(lastMaxLuminosity != te.getField(2)) {
+            if(lastTier != te.getField(2)) {
                 listener.sendWindowProperty(this, 2, te.getField(2));
             }
         }
         lastCookTime = te.getField(1);
-        lastMaxLuminosity = te.getField(2);
+        lastTier = te.getField(2);
     }
 
     @Override

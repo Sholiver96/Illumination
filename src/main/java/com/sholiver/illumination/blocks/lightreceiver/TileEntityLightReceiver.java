@@ -2,6 +2,7 @@ package com.sholiver.illumination.blocks.lightreceiver;
 
 import com.sholiver.illumination.blocks.solarlens.TileEntitySolarLens;
 import com.sholiver.illumination.blocks.lightrelay.TileEntityLightRelay;
+import com.sholiver.illumination.util.EnumTier;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,14 +15,16 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 
-import static com.sholiver.illumination.util.WorldUtil.FACING;
+import static com.sholiver.illumination.util.Properties.FACING;
 
 public abstract class TileEntityLightReceiver extends TileEntity implements ITickable {
 
     public int luminosity;
+    public EnumTier tier;
 
-    public TileEntityLightReceiver(){super();}
-
+    public TileEntityLightReceiver(){
+        super();
+    }
 
     protected int getLuminosityFromNearbyLenses() {
         int luminosity = 0;
@@ -42,13 +45,13 @@ public abstract class TileEntityLightReceiver extends TileEntity implements ITic
                     Block block = world.getBlockState(blockPos).getBlock();
                     if(te instanceof TileEntitySolarLens){
                         if(((TileEntitySolarLens) te).getOrientation().getOpposite().getIndex() == i){
-                            luminosity += ((TileEntitySolarLens) te).luminosity;
+                            luminosity += (((TileEntitySolarLens) te).luminosity * tier.getEfficiency());
                         }
                         j=11;
                     }
                     if(te instanceof TileEntityLightRelay){
                         if(((TileEntityLightRelay) te).getOrientation().getOpposite().getIndex() == i){
-                            luminosity += (((TileEntityLightRelay) te).luminosity * 0.9);
+                            luminosity += (((TileEntityLightRelay) te).luminosity * tier.getEfficiency());
                         }
                         j=11;
                     }
@@ -78,11 +81,13 @@ public abstract class TileEntityLightReceiver extends TileEntity implements ITic
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
         this.luminosity = compound.getInteger("Luminosity");
+        this.tier = EnumTier.fromIndex(compound.getInteger("Tier"));
     }
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
         compound.setInteger("Luminosity", this.luminosity);
+        compound.setInteger("Tier", this.tier.getIndex());
         return compound;
     }
 

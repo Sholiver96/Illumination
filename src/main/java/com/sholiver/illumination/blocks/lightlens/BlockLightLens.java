@@ -1,7 +1,7 @@
 package com.sholiver.illumination.blocks.lightlens;
 
 import com.sholiver.illumination.Illumination;
-import com.sholiver.illumination.blocks.solarlens.TileEntitySolarLens;
+import com.sholiver.illumination.util.EnumTier;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -17,22 +17,20 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
-import static com.sholiver.illumination.util.WorldUtil.FACING;
+import static com.sholiver.illumination.util.Properties.FACING;
 
 public abstract class BlockLightLens extends Block implements ITileEntityProvider {
 
-    public final int maxLuminosity;
+    public final EnumTier tier;
 
-    public BlockLightLens(String registryName, int maxLuminosity) {
+    public BlockLightLens(String registryName, EnumTier tier) {
         super(Material.IRON);
         setRegistryName(registryName);
         setUnlocalizedName(Illumination.MODID + "." + registryName);
         setCreativeTab(Illumination.ILLUMINATION_TAB);
         setHardness(2.0f);
         setResistance(20.0f);
-        this.maxLuminosity = maxLuminosity;
+        this.tier = tier;
     }
 
     @Override

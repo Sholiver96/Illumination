@@ -4,7 +4,7 @@ import com.sholiver.illumination.util.LightBeamRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 
-public class TileEntitySolarRelayRenderer extends TileEntitySpecialRenderer<TileEntityLightRelay> {
+public class TileEntityLightRelayRenderer extends TileEntitySpecialRenderer<TileEntityLightRelay> {
 
     @Override
     public void render(TileEntityLightRelay te, double x, double y, double z, float partialTicks, int damage, float unknown) {

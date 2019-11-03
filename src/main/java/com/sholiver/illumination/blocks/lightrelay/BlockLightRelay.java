@@ -1,6 +1,7 @@
 package com.sholiver.illumination.blocks.lightrelay;
 
 import com.sholiver.illumination.blocks.lightreceiver.BlockLightReceiver;
+import com.sholiver.illumination.util.EnumTier;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,11 +16,11 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-import static com.sholiver.illumination.util.WorldUtil.FACING;
+import static com.sholiver.illumination.util.Properties.FACING;
 
 public class BlockLightRelay extends BlockLightReceiver implements ITileEntityProvider {
-    public BlockLightRelay() {
-        super("light_relay");
+    public BlockLightRelay(String registryName, EnumTier tier) {
+        super(registryName, tier);
     }
 
     @Override
@@ -44,6 +45,6 @@ public class BlockLightRelay extends BlockLightReceiver implements ITileEntityPr
     @Nullable
     @Override
     public TileEntity createNewTileEntity(World world, int i) {
-        return new TileEntityLightRelay();
+        return new TileEntityLightRelay(tier);
     }
 }

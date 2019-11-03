@@ -11,6 +11,18 @@ tile.illumination.illuminator_glimmering.name=Glimmering Illuminator
 tile.illumination.illuminator_luminous.name=Luminous Illuminator
 tile.illumination.illuminator_radiant.name=Radiant Illuminator
 
+tile.illumination.light_furnace.name=Light Furnace
+tile.illumination.light_furnace_glimmering.name=Glimmering Light Furnace
+tile.illumination.light_furnace_luminous.name=Luminous Light Furnace
+tile.illumination.light_furnace_radiant.name=Radiant Light Furnace
+
+tile.illumination.light_relay.name=Light Relay
+
+tile.illumination.solar_lens.name=Solar Lens
+tile.illumination.solar_lens_glimmering.name=Glimmering Solar Lens
+tile.illumination.solar_lens_luminous.name=Luminous Solar Lens
+tile.illumination.solar_lens_radiant.name=Radiant Solar Lens
+
 # Items
 item.illumination.ingot_glimmering.name=Glimmering Ingot
 item.illumination.ingot_luminous.name=Luminous Ingot

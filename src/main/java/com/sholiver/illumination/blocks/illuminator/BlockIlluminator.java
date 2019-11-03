@@ -1,6 +1,7 @@
 package com.sholiver.illumination.blocks.illuminator;
 
 import com.sholiver.illumination.blocks.lightmachine.BlockLightMachine;
+import com.sholiver.illumination.util.EnumTier;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.tileentity.TileEntity;
@@ -13,14 +14,14 @@ import javax.annotation.Nullable;
 
 public class BlockIlluminator extends BlockLightMachine {
 
-    public BlockIlluminator(String registryName, int maxLuminosity) {
-        super(registryName, maxLuminosity, 1);
+    public BlockIlluminator(String registryName, EnumTier tier) {
+        super(registryName, tier, 1);
     }
 
     @Nullable
     @Override
     public TileEntity createNewTileEntity(World world, int meta) {
-        return new TileEntityIlluminator().setValues(800);
+        return new TileEntityIlluminator(tier);
     }
 
     @Override

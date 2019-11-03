@@ -1,6 +1,7 @@
 package com.sholiver.illumination.blocks.lightmachine;
 
 import com.sholiver.illumination.blocks.lightreceiver.TileEntityLightReceiver;
+import com.sholiver.illumination.util.EnumTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -10,17 +11,12 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public abstract class TileEntityLightMachine extends TileEntityLightReceiver {
 
-    public int maxLuminosity;
-
     protected int cookTime;
     protected int totalCookTime = 400;
     protected ItemStackHandler itemStackHandler;
 
-    public TileEntityLightMachine(){super();}
-
-    public TileEntityLightMachine setValues(int maxLuminosity){
-        this.maxLuminosity = maxLuminosity;
-        return this;
+    public TileEntityLightMachine(){
+        super();
     }
 
     @Override
@@ -29,7 +25,7 @@ public abstract class TileEntityLightMachine extends TileEntityLightReceiver {
         boolean flag = this.isBurning();
         if(!this.world.isRemote){
             if(this.world.getWorldTime() % 20L == 0) {
-                if(luminosity != getLuminosityFromNearbyLenses()) luminosity = getLuminosityFromNearbyLenses();
+                if(luminosity != Math.min(tier.getMachineLuminosity(), getLuminosityFromNearbyLenses())) luminosity = Math.min(tier.getMachineLuminosity(), getLuminosityFromNearbyLenses());
                 this.world.markAndNotifyBlock(pos, null, world.getBlockState(pos), world.getBlockState(pos), 2);
             }
             if(this.isBurning() && this.canProcess()) {
@@ -68,7 +64,7 @@ public abstract class TileEntityLightMachine extends TileEntityLightReceiver {
             case 1:
                 return this.cookTime;
             case 2:
-                return this.maxLuminosity;
+                return this.tier.getIndex();
             default:
                 return 0;
         }
@@ -83,7 +79,7 @@ public abstract class TileEntityLightMachine extends TileEntityLightReceiver {
                 this.cookTime = value;
                 return;
             case 2:
-                this.maxLuminosity = value;
+                this.tier = EnumTier.fromIndex(value);
                 return;
         }
     }

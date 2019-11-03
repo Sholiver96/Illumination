@@ -44,8 +44,14 @@ public class ModelRegistrationHandler
         registerModel(Item.getItemFromBlock(ModBlocks.ILLUMINATOR_RADIANT),0);
 
         registerModel(Item.getItemFromBlock(ModBlocks.LIGHT_FURNACE),0);
+        registerModel(Item.getItemFromBlock(ModBlocks.LIGHT_FURNACE_GLIMMERING),0);
+        registerModel(Item.getItemFromBlock(ModBlocks.LIGHT_FURNACE_LUMINOUS),0);
+        registerModel(Item.getItemFromBlock(ModBlocks.LIGHT_FURNACE_RADIANT),0);
 
         registerModel(Item.getItemFromBlock(ModBlocks.SOLAR_LENS),0);
+        registerModel(Item.getItemFromBlock(ModBlocks.SOLAR_LENS_GLIMMERING),0);
+        registerModel(Item.getItemFromBlock(ModBlocks.SOLAR_LENS_LUMINOUS),0);
+        registerModel(Item.getItemFromBlock(ModBlocks.SOLAR_LENS_RADIANT),0);
 
         registerModel(Item.getItemFromBlock(ModBlocks.LIGHT_RELAY),0);
     }

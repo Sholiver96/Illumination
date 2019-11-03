@@ -2,6 +2,7 @@ package com.sholiver.illumination.blocks.lightrelay;
 
 import com.sholiver.illumination.blocks.lightreceiver.BlockLightReceiver;
 import com.sholiver.illumination.blocks.lightreceiver.TileEntityLightReceiver;
+import com.sholiver.illumination.util.EnumTier;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
@@ -11,7 +12,14 @@ import net.minecraft.util.math.BlockPos;
 
 public class TileEntityLightRelay extends TileEntityLightReceiver {
 
-    public final int maxLength = 10;
+    public TileEntityLightRelay(EnumTier tier){
+        this();
+        this.tier = tier;
+    }
+
+    public TileEntityLightRelay(){
+        super();
+    }
     @Override
     public void update() {
         if(!this.world.isRemote) {
@@ -23,7 +31,7 @@ public class TileEntityLightRelay extends TileEntityLightReceiver {
     }
 
     protected float getLightBeamLength() {
-        for(int i = 1; i <= maxLength; i++) {
+        for(int i = 1; i <= tier.getLaserLength(); i++) {
             BlockPos blockPos;
             switch (getOrientation()) {
                 case NORTH: blockPos = pos.north(i); break;
@@ -49,6 +57,7 @@ public class TileEntityLightRelay extends TileEntityLightReceiver {
 
     @Override
     public AxisAlignedBB getRenderBoundingBox() {
+        int maxLength = tier.getLaserLength();
         return new AxisAlignedBB(this.getPos().south(maxLength).east(maxLength), this.getPos().north(maxLength).west(maxLength).up(1));
     }
 }
