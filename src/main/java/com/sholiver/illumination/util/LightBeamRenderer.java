@@ -116,4 +116,19 @@ public class LightBeamRenderer {
 
         GlStateManager.popMatrix();
     }
+
+    public float[] getColorFromLuminosity(int luminosity, float alpha){
+        if(luminosity<=800){
+            return new float[]{0.85F, 0.29F, 0.25F, alpha * (0.3F + 0.7F *(float)luminosity/800F)};
+        }
+        else if(luminosity<=1600){
+            return new float[]{0.23F, 0.26F, 0.60F, alpha * (0.3F + 0.7F *(float)(luminosity-800)/800F)};
+        }
+        else if(luminosity<=3200){
+            return new float[]{0.85F, 0.63F, 0.31F, alpha * (0.3F + 0.7F *(float)(luminosity-1600)/1600F)};
+        }
+        else{
+            return new float[]{0.92F, 0.96F, 0.84F, alpha * (0.3F + 0.7F *(float)(luminosity-3200)/6400F)};
+        }
+    }
 }

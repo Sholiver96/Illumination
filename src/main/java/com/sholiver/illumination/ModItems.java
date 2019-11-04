@@ -1,10 +1,6 @@
 package com.sholiver.illumination;
 
-import com.sholiver.illumination.Illumination;
-import com.sholiver.illumination.items.ItemLens;
-import com.sholiver.illumination.items.ItemLightCoal;
-import com.sholiver.illumination.items.ItemLightDust;
-import com.sholiver.illumination.items.ItemLightIngot;
+import com.sholiver.illumination.items.*;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -15,28 +11,34 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class ModItems {
 
     @ObjectHolder(Illumination.MODID + ":ingot_glimmering")
-    public static ItemLightIngot INGOT_GLIMMERING;
+    public static ItemGlimmeringIngot INGOT_GLIMMERING;
     @ObjectHolder(Illumination.MODID + ":ingot_luminous")
-    public static ItemLightIngot INGOT_LUMINOUS;
+    public static ItemLuminousIngot INGOT_LUMINOUS;
     @ObjectHolder(Illumination.MODID + ":ingot_radiant")
-    public static ItemLightIngot INGOT_RADIANT;
+    public static ItemRadiantIngot INGOT_RADIANT;
 
     @ObjectHolder(Illumination.MODID + ":dust_glimmering")
-    public static ItemLightDust DUST_GLIMMERING;
+    public static ItemGlimmeringDust DUST_GLIMMERING;
     @ObjectHolder(Illumination.MODID + ":dust_luminous")
-    public static ItemLightDust DUST_LUMINOUS;
+    public static ItemLuminousDust DUST_LUMINOUS;
     @ObjectHolder(Illumination.MODID + ":dust_radiant")
-    public static ItemLightDust DUST_RADIANT;
+    public static ItemRadiantDust DUST_RADIANT;
 
     @ObjectHolder(Illumination.MODID + ":coal_glimmering")
-    public static ItemLightCoal COAL_GLIMMERING;
+    public static ItemGlimmeringCoal COAL_GLIMMERING;
     @ObjectHolder(Illumination.MODID + ":coal_luminous")
-    public static ItemLightCoal COAL_LUMINOUS;
+    public static ItemLuminousCoal COAL_LUMINOUS;
     @ObjectHolder(Illumination.MODID + ":coal_radiant")
-    public static ItemLightCoal COAL_RADIANT;
+    public static ItemRadiantCoal COAL_RADIANT;
 
     @ObjectHolder(Illumination.MODID + ":lens")
     public static ItemLens LENS;
+    @ObjectHolder(Illumination.MODID + ":lens_glimmering")
+    public static ItemGlimmeringLens LENS_GLIMMERING;
+    @ObjectHolder(Illumination.MODID + ":lens_luminous")
+    public static ItemLuminousLens LENS_LUMINOUS;
+    @ObjectHolder(Illumination.MODID + ":lens_radiant")
+    public static ItemRadiantLens LENS_RADIANT;
 
     @Mod.EventBusSubscriber(modid = Illumination.MODID)
     public static class Registration
@@ -45,19 +47,22 @@ public class ModItems {
         public static void registerItems(RegistryEvent.Register<Item> event)
         {
             IForgeRegistry<Item> registry = event.getRegistry();
-            registry.register(new ItemLightIngot("ingot_glimmering"));
-            registry.register(new ItemLightIngot("ingot_luminous"));
-            registry.register(new ItemLightIngot("ingot_radiant"));
+            registry.register(new ItemGlimmeringIngot());
+            registry.register(new ItemLuminousIngot());
+            registry.register(new ItemRadiantIngot());
 
-            registry.register(new ItemLightDust("dust_glimmering"));
-            registry.register(new ItemLightDust("dust_luminous"));
-            registry.register(new ItemLightDust("dust_radiant"));
+            registry.register(new ItemGlimmeringDust());
+            registry.register(new ItemLuminousDust());
+            registry.register(new ItemRadiantDust());
 
-            registry.register(new ItemLightCoal("coal_glimmering", 2400));
-            registry.register(new ItemLightCoal("coal_luminous", 3200));
-            registry.register(new ItemLightCoal("coal_radiant", 4000));
+            registry.register(new ItemGlimmeringCoal());
+            registry.register(new ItemLuminousCoal());
+            registry.register(new ItemRadiantCoal());
 
-            registry.register(new ItemLens("lens"));
+            registry.register(new ItemLens());
+            registry.register(new ItemGlimmeringLens());
+            registry.register(new ItemLuminousLens());
+            registry.register(new ItemRadiantLens());
         }
     }
 }

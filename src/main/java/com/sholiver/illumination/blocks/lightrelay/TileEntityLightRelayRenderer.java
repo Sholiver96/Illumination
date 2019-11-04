@@ -17,8 +17,8 @@ public class TileEntityLightRelayRenderer extends TileEntitySpecialRenderer<Tile
             GlStateManager.pushMatrix();
             GlStateManager.translate(x+0.5,y+0.5,z+0.5);
             GlStateManager.disableLighting();
-            lightBeamRenderer.renderLightBeam(direction, te.getLightBeamLength(), 0.05F, new float[]{1F, 1F, 1F, 1F});
-            lightBeamRenderer.renderLightBeam(direction, te.getLightBeamLength(), 0.075F, new float[]{0.8F, 0.8F, 0.8F, 0.4F});
+            lightBeamRenderer.renderLightBeam(direction, te.getLightBeamLength(), 0.05F, lightBeamRenderer.getColorFromLuminosity(te.luminosity, 1F));
+            lightBeamRenderer.renderLightBeam(direction, te.getLightBeamLength(), 0.075F, lightBeamRenderer.getColorFromLuminosity(te.luminosity, 0.4F));
             GlStateManager.popMatrix();
         }
     }

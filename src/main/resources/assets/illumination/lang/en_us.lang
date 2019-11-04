@@ -17,6 +17,9 @@ tile.illumination.light_furnace_luminous.name=Luminous Light Furnace
 tile.illumination.light_furnace_radiant.name=Radiant Light Furnace
 
 tile.illumination.light_relay.name=Light Relay
+tile.illumination.light_relay_glimmering.name=Glimmering Light Relay
+tile.illumination.light_relay_luminous.name=Luminous Light Relay
+tile.illumination.light_relay_radiant.name=Radiant Light Relay
 
 tile.illumination.solar_lens.name=Solar Lens
 tile.illumination.solar_lens_glimmering.name=Glimmering Solar Lens
@@ -27,13 +30,19 @@ tile.illumination.solar_lens_radiant.name=Radiant Solar Lens
 item.illumination.ingot_glimmering.name=Glimmering Ingot
 item.illumination.ingot_luminous.name=Luminous Ingot
 item.illumination.ingot_radiant.name=Radiant Ingot
+
 item.illumination.dust_glimmering.name=Glimmering Dust
 item.illumination.dust_luminous.name=Luminous Dust
 item.illumination.dust_radiant.name=Radiant Dust
+
 item.illumination.coal_glimmering.name=Glimmering Coal
 item.illumination.coal_luminous.name=Luminous Coal
 item.illumination.coal_radiant.name=Radiant Coal
+
 item.illumination.lens.name=Lens
+item.illumination.lens_glimmering.name=Glimmering Lens
+item.illumination.lens_luminous.name=Luminous Lens
+item.illumination.lens_radiant.name=Radiant Lens
 
 # Tabs
 itemGroup.illumination=Illumination

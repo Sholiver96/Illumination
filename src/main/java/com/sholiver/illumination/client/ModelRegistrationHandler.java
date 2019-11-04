@@ -29,6 +29,9 @@ public class ModelRegistrationHandler
         registerModel(ModItems.COAL_RADIANT, 0);
 
         registerModel(ModItems.LENS, 0);
+        registerModel(ModItems.LENS_GLIMMERING, 0);
+        registerModel(ModItems.LENS_LUMINOUS, 0);
+        registerModel(ModItems.LENS_RADIANT, 0);
 
         registerModel(Item.getItemFromBlock(ModBlocks.BLOCK_GLIMMERING),0);
         registerModel(Item.getItemFromBlock(ModBlocks.BLOCK_LUMINOUS),0);
