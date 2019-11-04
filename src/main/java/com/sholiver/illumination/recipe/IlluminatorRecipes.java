@@ -29,21 +29,21 @@ public class IlluminatorRecipes {
         this.addIlluminationRecipe(new ItemStack(Items.COAL), new ItemStack(ModItems.DUST_RADIANT), new ItemStack(ModItems.COAL_RADIANT),2400, 1.2F);
     }
 
-    public void addIlluminationRecipe(ItemStack item, ItemStack dust, ItemStack output, int luminosity,Float exp)
+    public void addIlluminationRecipe(ItemStack input1, ItemStack input2, ItemStack output, int luminosity,Float exp)
     {
-        if(!getIlluminationResult(item, dust, 6400).isEmpty()) return;
-        this.illuminationList.add(Triple.of(item, dust, output));
+        if(!getIlluminationResult(input1, input2, 6400).isEmpty()) return;
+        this.illuminationList.add(Triple.of(input1, input2, output));
         if(!luminosityList.containsKey(output)) this.luminosityList.put(output, luminosity);
         if(!expList.containsKey(output)) this.expList.put(output, exp);
     }
 
-    public ItemStack getIlluminationResult(ItemStack item, ItemStack dust, int luminosity)
+    public ItemStack getIlluminationResult(ItemStack input1, ItemStack input2, int luminosity)
     {
         for(Triple<ItemStack, ItemStack, ItemStack> triple : illuminationList)
         {
-            if(item.isItemEqual(triple.getLeft())
-            && dust.isItemEqual(triple.getMiddle())
-            && luminosity >= luminosityList.get(triple.getRight()))
+            if((input1.isItemEqual(triple.getLeft()) && input2.isItemEqual(triple.getMiddle()))
+                    || (input1.isItemEqual(triple.getMiddle()) && input2.isItemEqual(triple.getLeft()))
+                    && luminosity >= luminosityList.get(triple.getRight()))
             {
                 return triple.getRight();
             }
@@ -55,16 +55,7 @@ public class IlluminatorRecipes {
     {
         for(Triple<ItemStack, ItemStack, ItemStack> triple : illuminationList)
         {
-            if(input.isItemEqual(triple.getLeft())) return true;
-        }
-        return false;
-    }
-
-    public boolean isValidDustSlot(ItemStack dust)
-    {
-        for(Triple<ItemStack, ItemStack, ItemStack> triple : illuminationList)
-        {
-            if(dust.isItemEqual(triple.getMiddle())) return true;
+            if(input.isItemEqual(triple.getLeft()) || input.isItemEqual(triple.getMiddle())) return true;
         }
         return false;
     }

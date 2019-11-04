@@ -3,10 +3,10 @@
   "textures": {
     "particle": "illumination:block/light_furnace_front",
     "north": "illumination:block/light_furnace_front",
-    "south": "illumination:block/light_receiver",
-    "east": "illumination:block/light_receiver",
-    "west": "illumination:block/light_receiver",
-    "up": "illumination:block/machine_bottom",
-    "down": "illumination:block/machine_bottom"
+    "south": "illumination:block/machine_receiver",
+    "east": "illumination:block/machine_receiver",
+    "west": "illumination:block/machine_receiver",
+    "up": "illumination:block/machine_top",
+    "down": "illumination:block/machine_top"
   }
 }

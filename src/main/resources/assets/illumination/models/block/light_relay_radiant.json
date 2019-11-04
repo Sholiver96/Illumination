@@ -1,10 +1,11 @@
 {
     "textures": {
-        "illuminator_lens": "illumination:block/illuminator_radiant_lens",
-        "machine_bottom": "illumination:block/machine_radiant_top",
+        "particle": "illumination:block/machine_lens_radiant",
+        "illuminator_lens": "illumination:block/machine_lens_radiant",
         "machine_top": "illumination:block/machine_top",
+        "machine_inner": "illumination:block/machine_inner",
         "machine_mirror": "illumination:block/machine_mirror",
-        "solar_receiver": "illumination:block/light_receiver_radiant"
+        "solar_receiver": "illumination:block/machine_receiver_radiant"
     },
     "display": {
         "gui": {
@@ -43,8 +44,8 @@
                 "east": { "texture": "#solar_receiver", "uv": [ 0, 14, 16, 16 ] },
                 "south": { "texture": "#solar_receiver", "uv": [ 0, 14, 16, 16 ] },
                 "west": { "texture": "#solar_receiver", "uv": [ 0, 14, 16, 16 ] },
-                "up": { "texture": "#machine_top", "uv": [ 0, 0, 16, 16 ] },
-                "down": { "texture": "#machine_bottom", "uv": [ 0, 0, 16, 16 ] }
+                "up": { "texture": "#machine_inner", "uv": [ 0, 0, 16, 16 ] },
+                "down": { "texture": "#machine_top", "uv": [ 0, 0, 16, 16 ] }
             }
         },
         {
@@ -52,11 +53,11 @@
             "from": [ 0, 2, 14 ],
             "to": [ 16, 16, 16 ],
             "faces": {
-                "north": { "texture": "#machine_top", "uv": [ 0, 0, 16, 14 ] },
+                "north": { "texture": "#machine_inner", "uv": [ 0, 0, 16, 14 ] },
                 "east": { "texture": "#solar_receiver", "uv": [ 0, 0, 2, 14 ] },
                 "south": { "texture": "#solar_receiver", "uv": [ 0, 0, 16, 14 ] },
                 "west": { "texture": "#solar_receiver", "uv": [ 14, 0, 16, 14 ] },
-                "up": { "texture": "#machine_bottom", "uv": [ 0, 14, 16, 16 ] }
+                "up": { "texture": "#machine_top", "uv": [ 0, 14, 16, 16 ] }
             }
         },
         {
@@ -74,9 +75,9 @@
             "to": [ 2, 16, 14 ],
             "faces": {
                 "north": { "texture": "#illuminator_lens", "uv": [ 14, 0, 16, 14 ] },
-                "east": { "texture": "#machine_top", "uv": [ 2, 0, 16, 14 ] },
+                "east": { "texture": "#machine_inner", "uv": [ 2, 0, 16, 14 ] },
                 "west": { "texture": "#solar_receiver", "uv": [ 0, 0, 14, 14 ] },
-                "up": { "texture": "#machine_bottom", "uv": [ 0, 0, 2, 14 ] }
+                "up": { "texture": "#machine_top", "uv": [ 0, 0, 2, 14 ] }
             }
         },
         {
@@ -86,8 +87,8 @@
             "faces": {
                 "north": { "texture": "#illuminator_lens", "uv": [ 0, 0, 2, 14 ] },
                 "east": { "texture": "#solar_receiver", "uv": [ 2, 0, 16, 14 ] },
-                "west": { "texture": "#machine_top", "uv": [ 0, 0, 14, 14 ] },
-                "up": { "texture": "#machine_bottom", "uv": [ 14, 0, 16, 14 ] }
+                "west": { "texture": "#machine_inner", "uv": [ 0, 0, 14, 14 ] },
+                "up": { "texture": "#machine_top", "uv": [ 14, 0, 16, 14 ] }
             }
         },
         {
@@ -96,7 +97,7 @@
             "to": [ 14, 16, 2 ],
             "faces": {
                 "north": { "texture": "#illuminator_lens", "uv": [ 2, 0, 14, 2 ] },
-                "up": { "texture": "#machine_bottom", "uv": [ 2, 0, 14, 2 ] }
+                "up": { "texture": "#machine_top", "uv": [ 2, 0, 14, 2 ] }
             }
         },
         {
@@ -228,8 +229,8 @@
             "from": [ 2, 14, 2 ],
             "to": [ 14, 16, 14 ],
             "faces": {
-                "up": { "texture": "#machine_bottom", "uv": [ 2, 2, 14, 14 ] },
-                "down": { "texture": "#machine_top", "uv": [ 2, 2, 14, 14 ] }
+                "up": { "texture": "#machine_top", "uv": [ 2, 2, 14, 14 ] },
+                "down": { "texture": "#machine_inner", "uv": [ 2, 2, 14, 14 ] }
             }
         }
     ]

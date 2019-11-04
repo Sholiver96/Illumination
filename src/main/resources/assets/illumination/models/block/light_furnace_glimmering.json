@@ -1,12 +1,12 @@
 {
   "parent": "block/cube",
   "textures": {
-    "particle": "illumination:block/light_furnace_glimmering_front",
-    "north": "illumination:block/light_furnace_glimmering_front",
-    "south": "illumination:block/light_receiver_glimmering",
-    "east": "illumination:block/light_receiver_glimmering",
-    "west": "illumination:block/light_receiver_glimmering",
-    "up": "illumination:block/machine_glimmering_top",
-    "down": "illumination:block/machine_glimmering_top"
+    "particle": "illumination:block/light_furnace_front_glimmering",
+    "north": "illumination:block/light_furnace_front_glimmering",
+    "south": "illumination:block/machine_receiver_glimmering",
+    "east": "illumination:block/machine_receiver_glimmering",
+    "west": "illumination:block/machine_receiver_glimmering",
+    "up": "illumination:block/machine_top",
+    "down": "illumination:block/machine_top"
   }
 }

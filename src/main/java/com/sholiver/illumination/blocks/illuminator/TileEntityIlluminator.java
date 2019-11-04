@@ -30,11 +30,8 @@ public class TileEntityIlluminator extends TileEntityLightMachine {
                 switch(slot)
                 {
                     case 0:
-                        if(IlluminatorRecipes.instance().isValidInputSlot(stack)) {return true;}
-                        return false;
                     case 1:
-                        if(IlluminatorRecipes.instance().isValidDustSlot(stack)){return true;}
-                        return false;
+                        return IlluminatorRecipes.instance().isValidInputSlot(stack);
                     default: return false;
                 }
             }
@@ -80,9 +77,7 @@ public class TileEntityIlluminator extends TileEntityLightMachine {
         }
         ItemStack outSlot = getStackInSlot(2);
         if(output.isItemEqual(outSlot) || outSlot.isEmpty()){
-            if(output.getCount() + outSlot.getCount() <= output.getMaxStackSize()) {
-                return true;
-            }
+            return output.getCount() + outSlot.getCount() <= output.getMaxStackSize();
         }
         return false;
     }

@@ -1,8 +1,9 @@
 {
     "textures": {
-        "illuminator_lens": "illumination:block/illuminator_lens",
-        "machine_bottom": "illumination:block/machine_bottom",
+        "particle": "illumination:block/machine_lens",
+        "illuminator_lens": "illumination:block/machine_lens",
         "machine_top": "illumination:block/machine_top",
+        "machine_inner": "illumination:block/machine_inner",
         "machine_mirror": "illumination:block/machine_mirror",
         "machine_side": "illumination:block/machine_side"
     },
@@ -43,8 +44,8 @@
                 "east": { "texture": "#machine_side", "uv": [ 0, 14, 16, 16 ] },
                 "south": { "texture": "#machine_side", "uv": [ 0, 14, 16, 16 ] },
                 "west": { "texture": "#machine_side", "uv": [ 0, 14, 16, 16 ] },
-                "up": { "texture": "#machine_top", "uv": [ 0, 0, 16, 16 ] },
-                "down": { "texture": "#machine_bottom", "uv": [ 0, 0, 16, 16 ] }
+                "up": { "texture": "#machine_inner", "uv": [ 0, 0, 16, 16 ] },
+                "down": { "texture": "#machine_top", "uv": [ 0, 0, 16, 16 ] }
             }
         },
         {
@@ -52,7 +53,7 @@
             "from": [ 0, 2, 14 ], 
             "to": [ 16, 16, 16 ], 
             "faces": {
-                "north": { "texture": "#machine_top", "uv": [ 0, 0, 16, 14 ] },
+                "north": { "texture": "#machine_inner", "uv": [ 0, 0, 16, 14 ] },
                 "east": { "texture": "#machine_side", "uv": [ 0, 0, 2, 14 ] },
                 "south": { "texture": "#machine_side", "uv": [ 0, 0, 16, 14 ] },
                 "west": { "texture": "#machine_side", "uv": [ 14, 0, 16, 14 ] },
@@ -74,7 +75,7 @@
             "to": [ 2, 16, 14 ], 
             "faces": {
                 "north": { "texture": "#illuminator_lens", "uv": [ 14, 0, 16, 14 ] },
-                "east": { "texture": "#machine_top", "uv": [ 2, 0, 16, 14 ] },
+                "east": { "texture": "#machine_inner", "uv": [ 2, 0, 16, 14 ] },
                 "west": { "texture": "#machine_side", "uv": [ 0, 0, 14, 14 ] },
                 "up": { "texture": "#illuminator_lens", "uv": [ 0, 0, 2, 14 ] }
             }
@@ -86,7 +87,7 @@
             "faces": {
                 "north": { "texture": "#illuminator_lens", "uv": [ 0, 0, 2, 14 ] },
                 "east": { "texture": "#machine_side", "uv": [ 2, 0, 16, 14 ] },
-                "west": { "texture": "#machine_top", "uv": [ 0, 0, 14, 14 ] },
+                "west": { "texture": "#machine_inner", "uv": [ 0, 0, 14, 14 ] },
                 "up": { "texture": "#illuminator_lens", "uv": [ 14, 0, 16, 14 ] }
             }
         },
